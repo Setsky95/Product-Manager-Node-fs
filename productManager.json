@@ -1,0 +1,38 @@
+[
+	{
+		"title": "RACK DE PESAS ",
+		"description": "Con mas de 30 entrenamientos",
+		"price": "50600",
+		"thumbnail": "www.",
+		"code": "Rack123",
+		"stock": "46",
+		"id": 1
+	},
+	{
+		"title": " Indoor Bike 100IT ",
+		"description": "Con un disco de inercia de 25kg",
+		"price": "50600",
+		"thumbnail": "www.",
+		"code": "100ITARG",
+		"stock": "46",
+		"id": 2
+	},
+	{
+		"title": " Abspro 3500 ",
+		"description": "Abdominales de acero para toda la familia",
+		"price": "4200",
+		"thumbnail": "www.",
+		"code": "arg-3500",
+		"stock": "16",
+		"id": 4
+	},
+	{
+		"title": " Treadmill 730 ",
+		"description": "Hasta 15 km /h",
+		"price": "50600",
+		"thumbnail": "www.",
+		"code": "730ARG",
+		"stock": "46",
+		"id": 3
+	}
+]
