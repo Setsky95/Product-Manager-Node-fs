@@ -155,11 +155,12 @@ app.get(`/products`, async (req, res) => {
   if (!limit) {
     res.json(products);
   } else {
-    const limitedProducts = limit ? products.slice(0, limit) : products;
+    const limitedProducts =  products.slice(0, limit) ;
     res.json(limitedProducts);
   }
 });
 
+//ejemplo de ruta con query http://localhost:8080/products?limit=2
 
 
 ///////////////////RUTA SERVIDOR CON ID////////////////
@@ -176,6 +177,7 @@ app.get(`/products/:id`, async (req, res) => {
     res.status(500).json({ error: "Error al obtener el producto" });
   }
 });
+
 
 ///////////////////RUTA SERVIDOR CON QUERY CANTIDAD//////////////
 
