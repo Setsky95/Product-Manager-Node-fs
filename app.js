@@ -1,5 +1,9 @@
 const fs = require("fs");
 const path = require("path");
+const express = require(`express`)
+const app = express()
+app.use(express.urlencoded({extended : true}))
+
 
 class ProductManager {
   constructor(filePath) {
@@ -67,6 +71,17 @@ class ProductManager {
     }
   }
 
+  async  getProductById(id) {
+    this.products = await getProductsFile(this.path);
+      let productById = this.products.find((product) => product.id === +id);
+      if (!productById) {
+        console.log("Product not found⛔");
+        return null;
+      } else {
+        console.log("Product found✔️");
+        return productById;
+      }
+    }
 
   async deleteProductByCode(code) {
     this.products2 = await getProductsFile(this.path);
@@ -126,20 +141,71 @@ async function saveFile(path, data) {
 }
 
 
+///////////////////////////////SERVER/////////////////////////7
+
+let productManager = new ProductManager("./productManager.json");
+
+///////////////RUTA SERVIDOR PRODUCTS  + VALIDACION QUERY/////////////////
+
+app.get(`/products`, async (req, res) => {
+  const limit = +req.query.limit;
+
+  const products = await productManager.getProducts();
+
+  if (!limit) {
+    res.json(products);
+  } else {
+    const limitedProducts = limit ? products.slice(0, limit) : products;
+    res.json(limitedProducts);
+  }
+});
 
 
-  // INICIAR CLASE ///
+
+///////////////////RUTA SERVIDOR CON ID////////////////
+
+app.get(`/products/:id`, async (req, res) => {
+  try {
+    const productFind = await productManager.getProductById(+req.params.id); 
+    if (productFind === null) {
+      res.status(404).json({ error: "Producto no encontrado" });
+    } else {
+      res.json(productFind);
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener el producto" });
+  }
+});
+
+///////////////////RUTA SERVIDOR CON QUERY CANTIDAD//////////////
+
+
+
+
+
+
+
+////////////INICIO DE SERVER////////////
+
+app.listen(8080,()=> console.log (`servidor corriendo en el puerto 8080`))
+
+
+
+
+
+
+//funciones anteriores//
+
 
   //// TRAER PRODUCTOS ///
 
-  async function loadProducts() {
+/*   async function loadProducts() {
     let productManager = new ProductManager("./productManager.json");
     const products = await productManager.getProducts();
-    console.log("Products", products);
   }
   
-  loadProducts();
-  
+ loadProducts(); 
+  */
   /// EMILINAR POR CODE ///
 /* 
 productManager.deleteProductByCode("730ARG")

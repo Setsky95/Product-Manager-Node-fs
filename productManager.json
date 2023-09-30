@@ -24,7 +24,7 @@
 		"thumbnail": "www.",
 		"code": "arg-3500",
 		"stock": "16",
-		"id": 4
+		"id": 3
 	},
 	{
 		"title": " Treadmill 730 ",
@@ -33,6 +33,16 @@
 		"thumbnail": "www.",
 		"code": "730ARG",
 		"stock": "46",
-		"id": 3
-	}
-]
+		"id": 4
+	},
+	{
+		"title": "Máquina de remo profesional",
+		"description": "Máquina de ejercicio para entrenamiento cardiovascular",
+		"price": 9500,
+		"thumbnail": "www.thumbnail10.com",
+		"code": "remo-9500",
+		"stock": 56,
+		"id": 5
+	  }
+
+	]
